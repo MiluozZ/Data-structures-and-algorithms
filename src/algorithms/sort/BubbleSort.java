@@ -1,4 +1,4 @@
-package com.hanshunping;
+package algorithms.sort;
 
 import java.util.Arrays;
 

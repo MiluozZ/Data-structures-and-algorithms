@@ -1,4 +1,4 @@
-package com.hanshunping.queue;
+package datastructures.queue;
 
 import java.util.Scanner;
 
@@ -13,7 +13,7 @@ public class ArrayQueue {
 //        ArrQue arrQue = new ArrQue(5);
         LoopArrayQue loopArrayQue = new LoopArrayQue(5);
         Boolean flag = true;
-        while (flag){
+        while (flag) {
             System.out.println("输入选项");
             System.out.println("1.show");
             System.out.println("2.add");
@@ -23,7 +23,7 @@ public class ArrayQueue {
 
             Scanner scanner = new Scanner(System.in);
             String s = scanner.nextLine();
-            switch (s){
+            switch (s) {
                 case "1":
                     loopArrayQue.showQue();
                     break;
@@ -52,13 +52,13 @@ public class ArrayQueue {
 //原始版数组队列类
 //head指向头数据的前一个位置，end指向最后一个数据的位置
 //该数组只能使用一次，不能复用
-class ArrQue{
+class ArrQue {
     private int maxSize;
     private int[] arr;
     private int head;
     private int end;
 
-    public ArrQue(int num){
+    public ArrQue(int num) {
         maxSize = num;
         arr = new int[maxSize];
         head = -1;
@@ -66,24 +66,24 @@ class ArrQue{
     }
 
     //显示队列
-    public void showQue(){
+    public void showQue() {
         for (int i = 0; i < arr.length; i++) {
-            System.out.printf("arr[%d]=%d\n",i,arr[i]);
+            System.out.printf("arr[%d]=%d\n", i, arr[i]);
         }
     }
 
     //取出数据
-    public void getData(){
-        if (head == end){
+    public void getData() {
+        if (head == end) {
             System.out.println("队列为空");
             return;
         }
-        System.out.println("取出"+arr[++head]);
+        System.out.println("取出" + arr[++head]);
     }
 
     //添加数据
-    public void add(){
-        if (end == maxSize - 1){
+    public void add() {
+        if (end == maxSize - 1) {
             System.out.println("队列已满");
             return;
         }
@@ -94,41 +94,41 @@ class ArrQue{
     }
 
     //显示队头数据
-    public void head(){
-        if (head == end){
+    public void head() {
+        if (head == end) {
             System.out.println("队列为空");
             return;
         }
-        System.out.println("当到队列头数据为："+arr[head + 1]);
+        System.out.println("当到队列头数据为：" + arr[head + 1]);
     }
 }
 
 //便于复用，创建循环数组队列
 //front指向第一个数据，rear指向最后一个数据的后一个位置
 //判断队列的空满： 当front==rear为空，当（rear+1） % maxSize = front为满
-class LoopArrayQue{
+class LoopArrayQue {
     private int maxSize;
     private int[] arr;
     private int front;
     private int rear;
 
-    public LoopArrayQue(int maxSize){
+    public LoopArrayQue(int maxSize) {
         this.maxSize = maxSize;
         arr = new int[maxSize];
-        front = 0 ;
+        front = 0;
         rear = 0;
     }
 
     //显示队列
-    public void showQue(){
+    public void showQue() {
         for (int i = 0; i < arr.length; i++) {
-            System.out.printf("arr[%d]=%d\n",i,arr[(i+front) % maxSize]);
+            System.out.printf("arr[%d]=%d\n", i, arr[(i + front) % maxSize]);
         }
     }
 
     //取出数据
-    public void getData(){
-        if (front == rear){
+    public void getData() {
+        if (front == rear) {
             System.out.println("队列为空，无法取出数据");
             return;
         }
@@ -138,8 +138,8 @@ class LoopArrayQue{
     }
 
     //添加数据
-    public void addData(){
-        if (((rear+1) % maxSize) == front){
+    public void addData() {
+        if (((rear + 1) % maxSize) == front) {
             System.out.println("队列已满，无法加入数据");
             return;
         }
@@ -150,12 +150,12 @@ class LoopArrayQue{
     }
 
     //显示队头数据
-    public void getFront(){
-        if (front == rear){
+    public void getFront() {
+        if (front == rear) {
             System.out.println("队列为空");
             return;
         }
-        System.out.println("当前队列头数据为："+arr[front]);
+        System.out.println("当前队列头数据为：" + arr[front]);
     }
 
 }
